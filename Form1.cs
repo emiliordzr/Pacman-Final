@@ -208,8 +208,6 @@ namespace pac_man
 
         public void level1()
         {
-            if (dots.dots.Count <= 0)
-                level += 1;
             if (level > 3)
                 gameend = true;
             DrawMap(level);
@@ -415,6 +413,11 @@ namespace pac_man
             VerifyG();
             //DrawPlayer();
             DrawGhost();
+            if (dots.dots.Count == 0)
+            {
+                level += level;
+                level1();
+            }
             if (gameover)
             {
                 g.Clear(Color.Black);
