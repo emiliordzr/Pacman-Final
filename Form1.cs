@@ -207,7 +207,7 @@ namespace pac_man
 
         public void level1()
         {
-            DrawMap(2);
+            DrawMap(3);
             pacman.Image = MyResource.fijo;
         }
 
