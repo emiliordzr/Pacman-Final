@@ -22,6 +22,7 @@ namespace pac_man
         Dot active;
         Player p;
         Ghost gh;
+        int level = 1;
         bool hold, right, left, down = false;
         bool up = false;
         float distance;
@@ -184,12 +185,12 @@ namespace pac_man
 
         public void level1()
         {
-            DrawMap1();
+            DrawMap(3);
             pacman.Image = MyResource.fijo;
         }
 
 
-        public void DrawMap1()
+        public void DrawMap(int nivel)
         {
             Bitmap bmp = new Bitmap(600, 600);
             g = Graphics.FromImage(bmp);
@@ -200,58 +201,169 @@ namespace pac_man
             score = 0;
             step = 3;
             
-
-
-            for (int x = 0; x < mapaBase.map0.GetLength(0); x++)
+            if (nivel == 1)
             {
-                for (int y = 0; y < mapaBase.map0.GetLength(1); y++)
+                for (int x = 0; x < mapaBase.map0.GetLength(0); x++)
                 {
-
-
-                    if (mapaBase.map0[y, x] == 1)
+                    for (int y = 0; y < mapaBase.map0.GetLength(1); y++)
                     {
-                        Figure fig = new Figure();
-                        fig.Lines.Add(new Line(new PointF(x * 15, y * 15), new PointF(x * 15 + 15, y * 15)));
-                        fig.Lines.Add(new Line(new PointF(x * 15 + 15, y * 15), new PointF(x * 15 + 15, y * 15 + 15)));
-                        fig.Lines.Add(new Line(new PointF(x * 15 + 15, y * 15 + 15), new PointF(x * 15, y * 15 + 15)));
-                        fig.Lines.Add(new Line(new PointF(x * 15, y * 15 + 15), new PointF(x * 15, y * 15)));
-                        scene.Figures.Add(fig);
-                    }
-                    else if(mapaBase.map0[y, x] == 2)
-                    {
-                        p = new Player(new PointF(x * 15, y * 15), new PointF(x * 15 + 7.5f, y * 15-15));
-                        p.hb.Add(new Line(new PointF(x * 15, y * 15), new PointF(x * 15 + 15, y * 15)));
-                        p.hb.Add(new Line(new PointF(x * 15 + 15, y * 15), new PointF(x * 15 + 15, y * 15 + 15)));
-                        p.hb.Add(new Line(new PointF(x * 15 + 15, y * 15 + 15), new PointF(x * 15, y * 15 + 15)));
-                        p.hb.Add(new Line(new PointF(x * 15, y * 15 + 15), new PointF(x * 15, y * 15)));
 
 
-                    }
-                    else if (mapaBase.map0[y, x] == 3)
-                    {
-                        Dot dot=new Dot(new PointF(x*15+7.5f, y*15+7.5f));
-                        dot.hb.Add(new Line(new PointF(x * 15, y * 15), new PointF(x * 15 + 15, y * 15)));
-                        dot.hb.Add(new Line(new PointF(x * 15 + 15, y * 15), new PointF(x * 15 + 15, y * 15 + 15)));
-                        dot.hb.Add(new Line(new PointF(x * 15 + 15, y * 15 + 15), new PointF(x * 15, y * 15 + 15)));
-                        dot.hb.Add(new Line(new PointF(x * 15, y * 15 + 15), new PointF(x * 15, y * 15)));
-                        dots.dots.Add(dot);
-                    }
-                    else if (mapaBase.map0[y, x] == 4)
-                    {
-                        gh = new Ghost(new PointF(x * 15, y * 15), new PointF(x * 15 + 7.5f, y * 15 - 15));
-                        gh.hb.Add(new Line(new PointF(x * 15, y * 15), new PointF(x * 15 + 15, y * 15)));
-                        gh.hb.Add(new Line(new PointF(x * 15 + 15, y * 15), new PointF(x * 15 + 15, y * 15 + 15)));
-                        gh.hb.Add(new Line(new PointF(x * 15 + 15, y * 15 + 15), new PointF(x * 15, y * 15 + 15)));
-                        gh.hb.Add(new Line(new PointF(x * 15, y * 15 + 15), new PointF(x * 15, y * 15)));
-                        
-                    }
+                        if (mapaBase.map0[y, x] == 1)
+                        {
+                            Figure fig = new Figure();
+                            fig.Lines.Add(new Line(new PointF(x * 15, y * 15), new PointF(x * 15 + 15, y * 15)));
+                            fig.Lines.Add(new Line(new PointF(x * 15 + 15, y * 15), new PointF(x * 15 + 15, y * 15 + 15)));
+                            fig.Lines.Add(new Line(new PointF(x * 15 + 15, y * 15 + 15), new PointF(x * 15, y * 15 + 15)));
+                            fig.Lines.Add(new Line(new PointF(x * 15, y * 15 + 15), new PointF(x * 15, y * 15)));
+                            scene.Figures.Add(fig);
+                        }
+                        else if (mapaBase.map0[y, x] == 2)
+                        {
+                            p = new Player(new PointF(x * 15, y * 15), new PointF(x * 15 + 7.5f, y * 15 - 15));
+                            p.hb.Add(new Line(new PointF(x * 15, y * 15), new PointF(x * 15 + 15, y * 15)));
+                            p.hb.Add(new Line(new PointF(x * 15 + 15, y * 15), new PointF(x * 15 + 15, y * 15 + 15)));
+                            p.hb.Add(new Line(new PointF(x * 15 + 15, y * 15 + 15), new PointF(x * 15, y * 15 + 15)));
+                            p.hb.Add(new Line(new PointF(x * 15, y * 15 + 15), new PointF(x * 15, y * 15)));
 
-                    //guía panel cuadrado para código 
-                    //g.DrawRectangle(Pens.Gray, x * 15, y * 15, 15, 15);
+
+                        }
+                        else if (mapaBase.map0[y, x] == 3)
+                        {
+                            Dot dot = new Dot(new PointF(x * 15 + 7.5f, y * 15 + 7.5f));
+                            dot.hb.Add(new Line(new PointF(x * 15, y * 15), new PointF(x * 15 + 15, y * 15)));
+                            dot.hb.Add(new Line(new PointF(x * 15 + 15, y * 15), new PointF(x * 15 + 15, y * 15 + 15)));
+                            dot.hb.Add(new Line(new PointF(x * 15 + 15, y * 15 + 15), new PointF(x * 15, y * 15 + 15)));
+                            dot.hb.Add(new Line(new PointF(x * 15, y * 15 + 15), new PointF(x * 15, y * 15)));
+                            dots.dots.Add(dot);
+                        }
+                        else if (mapaBase.map0[y, x] == 4)
+                        {
+                            gh = new Ghost(new PointF(x * 15, y * 15), new PointF(x * 15 + 7.5f, y * 15 - 15));
+                            gh.hb.Add(new Line(new PointF(x * 15, y * 15), new PointF(x * 15 + 15, y * 15)));
+                            gh.hb.Add(new Line(new PointF(x * 15 + 15, y * 15), new PointF(x * 15 + 15, y * 15 + 15)));
+                            gh.hb.Add(new Line(new PointF(x * 15 + 15, y * 15 + 15), new PointF(x * 15, y * 15 + 15)));
+                            gh.hb.Add(new Line(new PointF(x * 15, y * 15 + 15), new PointF(x * 15, y * 15)));
+
+                        }
+
+                        //guía panel cuadrado para código 
+                        //g.DrawRectangle(Pens.Gray, x * 15, y * 15, 15, 15);
+                    }
                 }
+
+                Render();
+
+            }
+            else if(nivel == 2)
+            {
+                for (int x = 0; x < mapaL2.map0.GetLength(0); x++)
+                {
+                    for (int y = 0; y < mapaBase.map0.GetLength(1); y++)
+                    {
+
+
+                        if (mapaL2.map0[y, x] == 1)
+                        {
+                            Figure fig = new Figure();
+                            fig.Lines.Add(new Line(new PointF(x * 15, y * 15), new PointF(x * 15 + 15, y * 15)));
+                            fig.Lines.Add(new Line(new PointF(x * 15 + 15, y * 15), new PointF(x * 15 + 15, y * 15 + 15)));
+                            fig.Lines.Add(new Line(new PointF(x * 15 + 15, y * 15 + 15), new PointF(x * 15, y * 15 + 15)));
+                            fig.Lines.Add(new Line(new PointF(x * 15, y * 15 + 15), new PointF(x * 15, y * 15)));
+                            scene.Figures.Add(fig);
+                        }
+                        else if (mapaL2.map0[y, x] == 2)
+                        {
+                            p = new Player(new PointF(x * 15, y * 15), new PointF(x * 15 + 7.5f, y * 15 - 15));
+                            p.hb.Add(new Line(new PointF(x * 15, y * 15), new PointF(x * 15 + 15, y * 15)));
+                            p.hb.Add(new Line(new PointF(x * 15 + 15, y * 15), new PointF(x * 15 + 15, y * 15 + 15)));
+                            p.hb.Add(new Line(new PointF(x * 15 + 15, y * 15 + 15), new PointF(x * 15, y * 15 + 15)));
+                            p.hb.Add(new Line(new PointF(x * 15, y * 15 + 15), new PointF(x * 15, y * 15)));
+
+
+                        }
+                        else if (mapaL2.map0[y, x] == 3)
+                        {
+                            Dot dot = new Dot(new PointF(x * 15 + 7.5f, y * 15 + 7.5f));
+                            dot.hb.Add(new Line(new PointF(x * 15, y * 15), new PointF(x * 15 + 15, y * 15)));
+                            dot.hb.Add(new Line(new PointF(x * 15 + 15, y * 15), new PointF(x * 15 + 15, y * 15 + 15)));
+                            dot.hb.Add(new Line(new PointF(x * 15 + 15, y * 15 + 15), new PointF(x * 15, y * 15 + 15)));
+                            dot.hb.Add(new Line(new PointF(x * 15, y * 15 + 15), new PointF(x * 15, y * 15)));
+                            dots.dots.Add(dot);
+                        }
+                        else if (mapaL2.map0[y, x] == 4)
+                        {
+                            gh = new Ghost(new PointF(x * 15, y * 15), new PointF(x * 15 + 7.5f, y * 15 - 15));
+                            gh.hb.Add(new Line(new PointF(x * 15, y * 15), new PointF(x * 15 + 15, y * 15)));
+                            gh.hb.Add(new Line(new PointF(x * 15 + 15, y * 15), new PointF(x * 15 + 15, y * 15 + 15)));
+                            gh.hb.Add(new Line(new PointF(x * 15 + 15, y * 15 + 15), new PointF(x * 15, y * 15 + 15)));
+                            gh.hb.Add(new Line(new PointF(x * 15, y * 15 + 15), new PointF(x * 15, y * 15)));
+
+                        }
+
+                        //guía panel cuadrado para código 
+                        //g.DrawRectangle(Pens.Gray, x * 15, y * 15, 15, 15);
+                    }
+                }
+
+                Render();
+
+            }
+            else if (nivel == 3)
+            {
+                for (int x = 0; x < mapaL3.map0.GetLength(0); x++)
+                {
+                    for (int y = 0; y < mapaBase.map0.GetLength(1); y++)
+                    {
+
+
+                        if (mapaL3.map0[y, x] == 1)
+                        {
+                            Figure fig = new Figure();
+                            fig.Lines.Add(new Line(new PointF(x * 15, y * 15), new PointF(x * 15 + 15, y * 15)));
+                            fig.Lines.Add(new Line(new PointF(x * 15 + 15, y * 15), new PointF(x * 15 + 15, y * 15 + 15)));
+                            fig.Lines.Add(new Line(new PointF(x * 15 + 15, y * 15 + 15), new PointF(x * 15, y * 15 + 15)));
+                            fig.Lines.Add(new Line(new PointF(x * 15, y * 15 + 15), new PointF(x * 15, y * 15)));
+                            scene.Figures.Add(fig);
+                        }
+                        else if (mapaL3.map0[y, x] == 2)
+                        {
+                            p = new Player(new PointF(x * 15, y * 15), new PointF(x * 15 + 7.5f, y * 15 - 15));
+                            p.hb.Add(new Line(new PointF(x * 15, y * 15), new PointF(x * 15 + 15, y * 15)));
+                            p.hb.Add(new Line(new PointF(x * 15 + 15, y * 15), new PointF(x * 15 + 15, y * 15 + 15)));
+                            p.hb.Add(new Line(new PointF(x * 15 + 15, y * 15 + 15), new PointF(x * 15, y * 15 + 15)));
+                            p.hb.Add(new Line(new PointF(x * 15, y * 15 + 15), new PointF(x * 15, y * 15)));
+
+
+                        }
+                        else if (mapaL3.map0[y, x] == 3)
+                        {
+                            Dot dot = new Dot(new PointF(x * 15 + 7.5f, y * 15 + 7.5f));
+                            dot.hb.Add(new Line(new PointF(x * 15, y * 15), new PointF(x * 15 + 15, y * 15)));
+                            dot.hb.Add(new Line(new PointF(x * 15 + 15, y * 15), new PointF(x * 15 + 15, y * 15 + 15)));
+                            dot.hb.Add(new Line(new PointF(x * 15 + 15, y * 15 + 15), new PointF(x * 15, y * 15 + 15)));
+                            dot.hb.Add(new Line(new PointF(x * 15, y * 15 + 15), new PointF(x * 15, y * 15)));
+                            dots.dots.Add(dot);
+                        }
+                        else if (mapaL3.map0[y, x] == 4)
+                        {
+                            gh = new Ghost(new PointF(x * 15, y * 15), new PointF(x * 15 + 7.5f, y * 15 - 15));
+                            gh.hb.Add(new Line(new PointF(x * 15, y * 15), new PointF(x * 15 + 15, y * 15)));
+                            gh.hb.Add(new Line(new PointF(x * 15 + 15, y * 15), new PointF(x * 15 + 15, y * 15 + 15)));
+                            gh.hb.Add(new Line(new PointF(x * 15 + 15, y * 15 + 15), new PointF(x * 15, y * 15 + 15)));
+                            gh.hb.Add(new Line(new PointF(x * 15, y * 15 + 15), new PointF(x * 15, y * 15)));
+
+                        }
+
+                        //guía panel cuadrado para código 
+                        //g.DrawRectangle(Pens.Gray, x * 15, y * 15, 15, 15);
+                    }
+                }
+
+                Render();
+
             }
 
-            Render();
         }
 
         public void Render()

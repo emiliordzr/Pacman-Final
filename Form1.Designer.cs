@@ -42,7 +42,7 @@
             // pacman
             // 
             this.pacman.BackColor = System.Drawing.Color.Transparent;
-            this.pacman.Location = new System.Drawing.Point(126, 204);
+            this.pacman.Location = new System.Drawing.Point(132, 145);
             this.pacman.Name = "pacman";
             this.pacman.Size = new System.Drawing.Size(20, 20);
             this.pacman.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -69,7 +69,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(851, 34);
+            this.label1.Location = new System.Drawing.Point(978, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 16);
             this.label1.TabIndex = 2;
