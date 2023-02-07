@@ -23,7 +23,7 @@ namespace pac_man
         Dot active;
         Player p;
         Ghost gh;
-        int level = 3;
+        int level = 1;
         bool hold, right, left, down, gameover, gameend = false;
         bool up = false;
         float distance;
