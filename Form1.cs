@@ -181,7 +181,7 @@ namespace pac_man
                     UpdatePosition();
                     
                 }
-                if ((p.middle.Y + 7.5f >= l.Y - 1 && l.X != 0 && l.Y != 0) || (p.middle2.Y + 7.5f >= l2.Y - 1 && l2.X != 0 && l2.Y != 0) || (p.middle3.Y + 7.5f >= l3.Y - 1 && l3.X != 0 && l3.Y != 0))
+                if ((p.middle.Y + 7.5f == l.Y - 1 && l.X != 0 && l.Y != 0) || (p.middle2.Y + 7.5f == l2.Y - 1 && l2.X != 0 && l2.Y != 0) || (p.middle3.Y + 7.5f == l3.Y - 1 && l3.X != 0 && l3.Y != 0))
                 {
                     down = false;
                     gameover = true;
@@ -701,7 +701,10 @@ namespace pac_man
                 up = false;
                 down = false;
                 hold = false;
-                
+                l = new PointF(0, 0);
+                l2 = new PointF(0, 0);
+                l3 = new PointF(0, 0);
+
                 pacman.Image = MyResource.pac_man_d;
             }
             else if (e.KeyData == Keys.Left )
@@ -711,6 +714,9 @@ namespace pac_man
                 up = false;
                 down = false;
                 hold = false;
+                l = new PointF(0, 0);
+                l2 = new PointF(0, 0);
+                l3 = new PointF(0, 0);
                 pacman.Image = MyResource.pac_man_i;
             }
             else if (e.KeyData == Keys.Up )
@@ -720,6 +726,9 @@ namespace pac_man
                 left = false;
                 down = false;
                 hold = false;
+                l = new PointF(0, 0);
+                l2 = new PointF(0, 0);
+                l3 = new PointF(0, 0);
                 pacman.Image = MyResource.pac_man_ar;
             }
             else if (e.KeyData == Keys.Down)
@@ -729,6 +738,9 @@ namespace pac_man
                 left = false;
                 up = false;
                 hold = false;
+                l = new PointF(0, 0);
+                l2 = new PointF(0, 0);
+                l3 = new PointF(0, 0);
                 pacman.Image = MyResource.pac_man_ab;
             }
         }
