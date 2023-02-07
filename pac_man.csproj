@@ -56,6 +56,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Ghost.cs" />
+    <Compile Include="Ghosts.cs" />
     <Compile Include="Line.cs" />
     <Compile Include="mapaBase.cs" />
     <Compile Include="mapaL2.cs" />
