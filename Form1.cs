@@ -477,7 +477,7 @@ namespace pac_man
                     }
                 }
             }
-            g.FillEllipse(Brushes.Red, tmp.X - 1, tmp.Y - 1, 3, 3);
+            g.FillEllipse(Brushes.Green, tmp.X - 1, tmp.Y - 1, 5, 5);
             return false;
         }
 
