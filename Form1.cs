@@ -415,17 +415,20 @@ namespace pac_man
             DrawGhost();
             if (dots.dots.Count == 0)
             {
-                level += level;
+                level += 1;
                 level1();
             }
             if (gameover)
             {
                 g.Clear(Color.Black);
                 gameover = false;
+                score = 0;
+                
                 DrawMap(level);
             }
             if (gameend)
                 g.Clear(Color.Black);
+            label1.Text = score.ToString();
             map.Invalidate();
         }
 
@@ -718,6 +721,7 @@ namespace pac_man
                 l = new PointF(0, 0);
                 l2 = new PointF(0, 0);
                 l3 = new PointF(0, 0);
+                trigger = new PointF(0, 0);
 
                 pacman.Image = MyResource.pac_man_d;
             }
@@ -731,6 +735,7 @@ namespace pac_man
                 l = new PointF(0, 0);
                 l2 = new PointF(0, 0);
                 l3 = new PointF(0, 0);
+                trigger = new PointF(0, 0);
                 pacman.Image = MyResource.pac_man_i;
             }
             else if (e.KeyData == Keys.Up )
@@ -743,6 +748,7 @@ namespace pac_man
                 l = new PointF(0, 0);
                 l2 = new PointF(0, 0);
                 l3 = new PointF(0, 0);
+                trigger = new PointF(0, 0);
                 pacman.Image = MyResource.pac_man_ar;
             }
             else if (e.KeyData == Keys.Down)
@@ -755,6 +761,7 @@ namespace pac_man
                 l = new PointF(0, 0);
                 l2 = new PointF(0, 0);
                 l3 = new PointF(0, 0);
+                trigger = new PointF(0, 0);
                 pacman.Image = MyResource.pac_man_ab;
             }
         }
