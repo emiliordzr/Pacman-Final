@@ -207,7 +207,7 @@ namespace pac_man
 
         public void level1()
         {
-            DrawMap(3);
+            DrawMap(2);
             pacman.Image = MyResource.fijo;
         }
 
@@ -251,7 +251,7 @@ namespace pac_man
 
 
                         }
-                        else if (mapaBase.map0[y, x] == 3)
+                        else if (mapaBase.map0[y, x] == 3 || mapaBase.map0[y, x] == 0)
                         {
                             Dot dot = new Dot(new PointF(x * 15 + 7.5f, y * 15 + 7.5f));
                             dot.hb.Add(new Line(new PointF(x * 15, y * 15), new PointF(x * 15 + 15, y * 15)));
@@ -306,7 +306,7 @@ namespace pac_man
 
 
                         }
-                        else if (mapaL2.map0[y, x] == 3)
+                        else if (mapaL2.map0[y, x] == 3 || mapaL2.map0[y, x] == 0)
                         {
                             Dot dot = new Dot(new PointF(x * 15 + 7.5f, y * 15 + 7.5f));
                             dot.hb.Add(new Line(new PointF(x * 15, y * 15), new PointF(x * 15 + 15, y * 15)));
@@ -360,7 +360,7 @@ namespace pac_man
 
 
                         }
-                        else if (mapaL3.map0[y, x] == 3)
+                        else if (mapaL3.map0[y, x] == 3 || mapaL3.map0[y, x] == 0)
                         {
                             Dot dot = new Dot(new PointF(x * 15 + 7.5f, y * 15 + 7.5f));
                             dot.hb.Add(new Line(new PointF(x * 15, y * 15), new PointF(x * 15 + 15, y * 15)));
