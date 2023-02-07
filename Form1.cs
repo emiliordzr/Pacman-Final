@@ -23,7 +23,7 @@ namespace pac_man
         Dot active;
         Player p;
         Ghost gh;
-        int level = 1;
+        int level = 3;
         bool hold, right, left, down, gameover, gameend = false;
         bool up = false;
         float distance;
@@ -426,9 +426,18 @@ namespace pac_man
                 
                 DrawMap(level);
             }
-            if (gameend)
-                g.Clear(Color.Black);
             label1.Text = score.ToString();
+            if (gameend)
+            {
+                g.Clear(Color.Black);
+                label1.Text = "Game Won";
+                left = false;
+                right=false;
+                up = false;
+                down = false;
+            }
+                
+            
             map.Invalidate();
         }
 
