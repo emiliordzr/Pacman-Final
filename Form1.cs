@@ -548,9 +548,9 @@ namespace pac_man
                     }
                 }
             }
-            g.FillEllipse(Brushes.Red, valid.X - 1, valid.Y - 1, 3, 3);
-            g.FillEllipse(Brushes.Red, valid2.X - 1, valid2.Y - 1, 3, 3);
-            g.FillEllipse(Brushes.Red, valid3.X - 1, valid3.Y - 1, 3, 3);
+            //g.FillEllipse(Brushes.Red, valid.X - 1, valid.Y - 1, 3, 3);
+            //g.FillEllipse(Brushes.Red, valid2.X - 1, valid2.Y - 1, 3, 3);
+            //g.FillEllipse(Brushes.Red, valid3.X - 1, valid3.Y - 1, 3, 3);
             distance = dTemp;
 
         }
@@ -588,7 +588,7 @@ namespace pac_man
                     }
                 }
             }
-            g.FillEllipse(Brushes.Red, trigger.X - 1, trigger.Y - 1, 3, 3);
+            //g.FillEllipse(Brushes.Red, trigger.X - 1, trigger.Y - 1, 3, 3);
             distance = dTemp;
 
         }
@@ -657,9 +657,9 @@ namespace pac_man
                     }
                 }
             }
-            g.FillEllipse(Brushes.Red, l.X - 1, l.Y - 1, 3, 3);
-            g.FillEllipse(Brushes.Red, l2.X - 1, l2.Y - 1, 3, 3);
-            g.FillEllipse(Brushes.Red, l3.X - 1, l3.Y - 1, 3, 3);
+            //g.FillEllipse(Brushes.Red, l.X - 1, l.Y - 1, 3, 3);
+            //g.FillEllipse(Brushes.Red, l2.X - 1, l2.Y - 1, 3, 3);
+            //g.FillEllipse(Brushes.Red, l3.X - 1, l3.Y - 1, 3, 3);
             distance = dTemp;
 
         }
