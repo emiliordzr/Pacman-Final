@@ -18,15 +18,16 @@ namespace pac_man
         static int forward;
         int step, score;
         Scene scene;
+        Ghosts ghosts;
         Dots dots;
         Dot active;
         Player p;
         Ghost gh;
         int level = 1;
-        bool hold, right, left, down = false;
+        bool hold, right, left, down, gameover = false;
         bool up = false;
         float distance;
-        PointF valid, valid2, valid3, trigger;
+        PointF valid, valid2, valid3, trigger, l,l2, l3;
         public Form1()
         {
             InitializeComponent();
@@ -38,7 +39,6 @@ namespace pac_man
             level1();
 
         }
-
         private void TIMER_Tick(object sender, EventArgs e)
         {
             if (left == true && hold == false)
@@ -62,6 +62,11 @@ namespace pac_man
                     forward += step;
                     UpdatePosition();
                     
+                }
+                if ((p.middle.X - 7.5f <= l.X + 1 && l.X != 0 && l.Y != 0) || (p.middle2.X - 7.5f <= l2.X + 1 && l2.X != 0 && l2.Y != 0) || (p.middle3.X - 7.5f <= l3.X + 1 && l3.X != 0 && l3.Y != 0))
+                {
+                    left=false;
+                    gameover=true;
                 }
                 if ((p.middle.X - 7.5f <= valid.X + 1 && valid.X != 0 && valid.Y != 0) || (p.middle2.X - 7.5f <= valid2.X + 1 && valid2.X != 0 && valid2.Y != 0) || (p.middle3.X - 7.5f <= valid3.X + 1 && valid3.X != 0 && valid3.Y != 0))
                 {
@@ -98,6 +103,11 @@ namespace pac_man
                     forward += step;
                     UpdatePosition();
                 }
+                if ((p.middle.X + 7.5f >= l.X - 1 && l.X != 0 && l.Y != 0) || (p.middle2.X + 7.5f >= l2.X - 1 && l2.X != 0 && l2.Y != 0) || (p.middle3.X + 7.5f >= l3.X - 1 && l3.X != 0 && l3.Y != 0))
+                {
+                    right = false;
+                    gameover = true;
+                }
                 if ((p.middle.X + 7.5f >= valid.X - 1 && valid.X != 0 && valid.Y != 0) || (p.middle2.X + 7.5f >= valid2.X - 1 && valid2.X != 0 && valid2.Y != 0) || (p.middle3.X + 7.5f >= valid3.X - 1 && valid3.X != 0 && valid3.Y != 0))
                 {
                     right=false;
@@ -131,7 +141,13 @@ namespace pac_man
                     forward += step;
                     UpdatePosition();
                 }
-                if ((p.middle.Y - 7.5f <= valid.Y + 1 && valid.X != 0 && valid.Y != 0) || (p.middle2.Y - 7.5f <= valid2.Y + 1 && valid2.X != 0 && valid2.Y != 0) || (p.middle3.Y - 7.5f <= valid3.Y + 1 && valid3.X != 0 && valid3.Y != 0))
+                if ((p.middle.Y - 7.5f <= l.Y + 1 && l.X != 0 && l.Y != 0) || (p.middle2.Y - 7.5f <= l2.Y + 1 && l2.X != 0 && l2.Y != 0) || (p.middle3.Y - 7.5f <= l3.Y + 1 && l3.X != 0 && l3.Y != 0))
+                {
+                    up = false;
+                    gameover = true;
+                }
+
+                    if ((p.middle.Y - 7.5f <= valid.Y + 1 && valid.X != 0 && valid.Y != 0) || (p.middle2.Y - 7.5f <= valid2.Y + 1 && valid2.X != 0 && valid2.Y != 0) || (p.middle3.Y - 7.5f <= valid3.Y + 1 && valid3.X != 0 && valid3.Y != 0))
                 {
                     up = false;
                 }
@@ -165,7 +181,13 @@ namespace pac_man
                     UpdatePosition();
                     
                 }
-                if ((p.middle.Y + 7.5f >= valid.Y - 1 && valid.X != 0 && valid.Y != 0) || (p.middle2.Y + 7.5f >= valid2.Y - 1 && valid2.X != 0 && valid2.Y != 0) || (p.middle3.Y + 7.5f >= valid3.Y - 1 && valid3.X != 0 && valid3.Y != 0))
+                if ((p.middle.Y + 7.5f >= l.Y - 1 && l.X != 0 && l.Y != 0) || (p.middle2.Y + 7.5f >= l2.Y - 1 && l2.X != 0 && l2.Y != 0) || (p.middle3.Y + 7.5f >= l3.Y - 1 && l3.X != 0 && l3.Y != 0))
+                {
+                    down = false;
+                    gameover = true;
+                }
+
+                    if ((p.middle.Y + 7.5f >= valid.Y - 1 && valid.X != 0 && valid.Y != 0) || (p.middle2.Y + 7.5f >= valid2.Y - 1 && valid2.X != 0 && valid2.Y != 0) || (p.middle3.Y + 7.5f >= valid3.Y - 1 && valid3.X != 0 && valid3.Y != 0))
                 {
                     down=false;
                 }
@@ -198,6 +220,7 @@ namespace pac_man
             g.Clear(Color.Black);
             scene = new Scene();
             dots = new Dots();
+            ghosts = new Ghosts();
             score = 0;
             step = 3;
             
@@ -244,6 +267,7 @@ namespace pac_man
                             gh.hb.Add(new Line(new PointF(x * 15 + 15, y * 15), new PointF(x * 15 + 15, y * 15 + 15)));
                             gh.hb.Add(new Line(new PointF(x * 15 + 15, y * 15 + 15), new PointF(x * 15, y * 15 + 15)));
                             gh.hb.Add(new Line(new PointF(x * 15, y * 15 + 15), new PointF(x * 15, y * 15)));
+                            ghosts.ghosts.Add(gh);
 
                         }
 
@@ -298,7 +322,7 @@ namespace pac_man
                             gh.hb.Add(new Line(new PointF(x * 15 + 15, y * 15), new PointF(x * 15 + 15, y * 15 + 15)));
                             gh.hb.Add(new Line(new PointF(x * 15 + 15, y * 15 + 15), new PointF(x * 15, y * 15 + 15)));
                             gh.hb.Add(new Line(new PointF(x * 15, y * 15 + 15), new PointF(x * 15, y * 15)));
-
+                            ghosts.ghosts.Add(gh);
                         }
 
                         //guía panel cuadrado para código 
@@ -352,7 +376,7 @@ namespace pac_man
                             gh.hb.Add(new Line(new PointF(x * 15 + 15, y * 15), new PointF(x * 15 + 15, y * 15 + 15)));
                             gh.hb.Add(new Line(new PointF(x * 15 + 15, y * 15 + 15), new PointF(x * 15, y * 15 + 15)));
                             gh.hb.Add(new Line(new PointF(x * 15, y * 15 + 15), new PointF(x * 15, y * 15)));
-
+                            ghosts.ghosts.Add(gh);
                         }
 
                         //guía panel cuadrado para código 
@@ -380,10 +404,14 @@ namespace pac_man
             {
                 g.FillEllipse(Brushes.White, dots.dots[i].location.X, dots.dots[i].location.Y, 3, 3);
             }
+            
             Verify();
             VerifiyP();
-            DrawPlayer();
+            VerifyG();
+            //DrawPlayer();
             DrawGhost();
+            if (gameover)
+                g.Clear(Color.Black);
             map.Invalidate();
         }
 
@@ -392,7 +420,7 @@ namespace pac_man
 
         }
 
-        public void DrawPlayer()
+        /*public void DrawPlayer()
         {
             if (GhostHit())
             {
@@ -407,14 +435,14 @@ namespace pac_man
             //g.DrawLine(Pens.Red, p.middle2, valid2);
             //g.DrawLine(Pens.Red, p.middle3, valid3);
 
-        }
+        }*/
         public void DrawGhost()
         {
-            g.FillEllipse(Brushes.Blue, gh.pos.X, gh.pos.Y, 15, 15);
-            for (int i = 0; i < gh.hb.Count; i++)
+            for (int i = 0; i < ghosts.ghosts.Count; i++)
             {
-                g.DrawLine(Pens.Red, gh.hb[i].a, gh.hb[i].b);
+                g.FillEllipse(Brushes.Red, ghosts.ghosts[i].pos.X, ghosts.ghosts[i].pos.Y, 15, 15);
             }
+
         }
 
         public void UpdatePosition()
@@ -565,7 +593,78 @@ namespace pac_man
 
         }
 
-        public bool GhostHit()
+        public void VerifyG()
+        {
+            PointF collision, collision2, collision3;
+            Ghost ghost;
+            Line line, user, user2, user3;
+
+            PointF tmp;
+            float dTemp, dTemp2, dTemp3, d, d2, d3;
+
+            dTemp = float.MaxValue;
+            dTemp2 = float.MaxValue;
+            dTemp3 = float.MaxValue;
+
+            l = new PointF();
+            l2 = new PointF();
+            l3 = new PointF();
+            user = new Line(p.middle, p.lookAt);
+            user2 = new Line(p.middle2, p.lookAt2);
+            user3 = new Line(p.middle3, p.lookAt3);
+
+            for (int i = 0; i < ghosts.ghosts.Count; i++)
+            {
+                ghost = ghosts.ghosts[i];
+                for (int j = 0; j < ghost.hb.Count; j++)
+                {
+                    line = ghost.hb[j];
+                    if (Util.Instance.Intersect(user, line))
+                    {
+                        collision = Util.Instance.FindPoint(user, line);
+                        d = Util.Instance.Distance(collision, p.middle);
+
+                        if (d < dTemp)
+                        {
+                            dTemp = d;
+                            l = collision;
+
+                        }
+                    }
+                    if (Util.Instance.Intersect(user2, line))
+                    {
+                        collision2 = Util.Instance.FindPoint(user2, line);
+                        d2 = Util.Instance.Distance(collision2, p.middle2);
+
+                        if (d2 < dTemp2)
+                        {
+                            dTemp2 = d2;
+                            l2 = collision2;
+
+                        }
+                    }
+                    if (Util.Instance.Intersect(user3, line))
+                    {
+                        collision3 = Util.Instance.FindPoint(user3, line);
+                        d3 = Util.Instance.Distance(collision3, p.middle3);
+
+                        if (d3 < dTemp3)
+                        {
+                            dTemp3 = d3;
+                            l3 = collision3;
+
+                        }
+                    }
+                }
+            }
+            g.FillEllipse(Brushes.Red, l.X - 1, l.Y - 1, 3, 3);
+            g.FillEllipse(Brushes.Red, l2.X - 1, l2.Y - 1, 3, 3);
+            g.FillEllipse(Brushes.Red, l3.X - 1, l3.Y - 1, 3, 3);
+            distance = dTemp;
+
+        }
+
+        /*public bool GhostHit()
         {
             PointF collision, tmp;
             float dTemp, d;
@@ -591,7 +690,7 @@ namespace pac_man
             }
             g.FillEllipse(Brushes.Green, tmp.X - 1, tmp.Y - 1, 5, 5);
             return false;
-        }
+        }*/
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
