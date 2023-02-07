@@ -176,6 +176,9 @@ namespace pac_man
                    
                 }
             }
+            pacman.Top = (int)p.getPos().Y + 1;
+            pacman.Left = (int)p.getPos().X ;
+
             Render();
         }
 
@@ -274,22 +277,7 @@ namespace pac_man
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Right & !hold)
-            { 
-                pacman.Image = MyResource.fijo;
-            }
-            else if (e.KeyData == Keys.Left & !hold)
-            {
-                pacman.Image = MyResource.fijo;
-            }
-            else if (e.KeyData == Keys.Up & !hold)
-            {
-                pacman.Image = MyResource.fijo;
-            }
-            else if (e.KeyData == Keys.Down & !hold)
-            {
-                pacman.Image = MyResource.fijo;
-            }
+
         }
 
         public void DrawPlayer()

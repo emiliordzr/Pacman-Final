@@ -24,6 +24,10 @@ namespace pac_man
             looks = new Line(middle, looksAt);
 
         }
+        public PointF getPos()
+        {
+            return this.pos;
+        }
 
         public void Turn(int i)
         {
