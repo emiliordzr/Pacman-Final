@@ -411,7 +411,11 @@ namespace pac_man
             //DrawPlayer();
             DrawGhost();
             if (gameover)
+            {
                 g.Clear(Color.Black);
+                gameover = false;
+                DrawMap(level);
+            }
             map.Invalidate();
         }
 
