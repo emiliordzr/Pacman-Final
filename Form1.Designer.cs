@@ -42,9 +42,9 @@
             // pacman
             // 
             this.pacman.BackColor = System.Drawing.Color.Transparent;
-            this.pacman.Location = new System.Drawing.Point(192, 126);
+            this.pacman.Location = new System.Drawing.Point(126, 204);
             this.pacman.Name = "pacman";
-            this.pacman.Size = new System.Drawing.Size(15, 15);
+            this.pacman.Size = new System.Drawing.Size(20, 20);
             this.pacman.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pacman.TabIndex = 0;
             this.pacman.TabStop = false;
@@ -77,8 +77,8 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.map);
             this.panel1.Controls.Add(this.pacman);
+            this.panel1.Controls.Add(this.map);
             this.panel1.Location = new System.Drawing.Point(150, 30);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 739);
