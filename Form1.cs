@@ -270,7 +270,7 @@ namespace pac_man
             }
             Verify();
             VerifiyP();
-            DrawPlayer();
+            //DrawPlayer();
             DrawGhost();
             map.Invalidate();
         }
