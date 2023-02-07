@@ -24,7 +24,7 @@ namespace pac_man
         Player p;
         Ghost gh;
         int level = 1;
-        bool hold, right, left, down, gameover = false;
+        bool hold, right, left, down, gameover, gameend = false;
         bool up = false;
         float distance;
         PointF valid, valid2, valid3, trigger, l,l2, l3;
@@ -37,6 +37,7 @@ namespace pac_man
         public void Init()
         {
             level1();
+
 
         }
         private void TIMER_Tick(object sender, EventArgs e)
@@ -207,7 +208,11 @@ namespace pac_man
 
         public void level1()
         {
-            DrawMap(2);
+            if (dots.dots.Count <= 0)
+                level += 1;
+            if (level > 3)
+                gameend = true;
+            DrawMap(level);
             pacman.Image = MyResource.fijo;
         }
 
@@ -416,6 +421,8 @@ namespace pac_man
                 gameover = false;
                 DrawMap(level);
             }
+            if (gameend)
+                g.Clear(Color.Black);
             map.Invalidate();
         }
 
